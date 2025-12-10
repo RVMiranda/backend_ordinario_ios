@@ -47,16 +47,7 @@
 
 - **Crear superusuario (interactivo):**
 
-  ```bash
-  docker compose exec -it django python manage.py createsuperuser
-  ```
-
-  - Como alternativa, este proyecto incluye `docker/create_superuser.py` que crea el superusuario a partir de las variables de entorno (`DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_EMAIL`, `DJANGO_SUPERUSER_PASSWORD`):
-
-  ```bash
-  docker compose exec django python docker/create_superuser.py
-  ```
-
+  docker exec django_backend python docker/create_superuser.py
 - **Entrar al shell de Django (interactivo):**
 
   ```bash
