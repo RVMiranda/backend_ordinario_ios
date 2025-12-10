@@ -27,13 +27,13 @@
 - **Crear apps (ejemplos que tienes):**
 
   ```bash
-  docker compose exec django python manage.py startapp auth_app
-  docker compose exec django python manage.py startapp estudiantes
-  docker compose exec django python manage.py startapp materias
-  docker compose exec django python manage.py startapp calificaciones
-  docker compose exec django python manage.py startapp tareas
-  docker compose exec django python manage.py startapp anuncios
-  docker compose exec django python manage.py startapp whitelabel
+  docker exec -it django_backend python manage.py startapp auth_app
+  docker exec -it django python manage.py startapp estudiantes
+  docker exec -it django python manage.py startapp materias
+  docker exec -it django python manage.py startapp calificaciones
+  docker exec -it django python manage.py startapp tareas
+  docker exec -it django python manage.py startapp anuncios
+  docker exec -it django python manage.py startapp whitelabel
   ```
 
   - Después de crear cada app: añade el nombre de la app en `INSTALLED_APPS` (en `config/settings.py`) y luego ejecuta `makemigrations`.
