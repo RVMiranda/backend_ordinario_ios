@@ -1,0 +1,109 @@
+{
+	"whitelabel": {
+		"institucion_1": {
+			"nombre": "Instituto Modelo",
+			"logo_url": "https://tu-logo.com/logo.png",
+			"colores": {
+				"primario": "#1A73E8",
+				"secundario": "#185ABC",
+				"fondo": "#F5F5F5",
+				"texto": "#000000"
+			},
+			"textos": {
+				"bienvenida": "Bienvenido al portal escolar",
+				"descripcion": "Consulta tus materias, tareas y calificaciones"
+			},
+			"config": {
+				"mostrar_calificaciones": true,
+				"mostrar_tareas": true,
+				"mostrar_anuncios": true
+			}
+		}
+	},
+
+	"estudiantes": {
+		"est_001": {
+			"nombre": "Juan Pérez",
+			"correo": "juan@example.com",
+			"matricula": "A0123456",
+			"institucion": "institucion_1",
+			"materias": {
+				"mat_001": true,
+				"mat_002": true
+			}
+		}
+	},
+
+	"materias": {
+		"mat_001": {
+			"nombre": "Matemáticas",
+			"profesor": "Pedro Gómez",
+			"institucion": "institucion_1",
+			"calificaciones": {
+				"est_001": 95
+			},
+			"tareas": {
+				"tarea_001": true
+			}
+		},
+		"mat_002": {
+			"nombre": "Historia Universal",
+			"profesor": "Laura Martínez",
+			"institucion": "institucion_1",
+			"calificaciones": {
+				"est_001": 88
+			},
+			"tareas": {
+				"tarea_002": true
+			}
+		}
+	},
+
+	"tareas": {
+		"tarea_001": {
+			"titulo": "Álgebra – Ejercicios 1 al 10",
+			"descripcion": "Resolver todos los ejercicios del libro",
+			"fecha_entrega": "2025-01-15",
+			"materia": "mat_001",
+			"institucion": "institucion_1"
+		},
+		"tarea_002": {
+			"titulo": "Lectura capítulo 3",
+			"descripcion": "Hacer un resumen",
+			"fecha_entrega": "2025-01-20",
+			"materia": "mat_002",
+			"institucion": "institucion_1"
+		}
+	},
+
+	"calificaciones": {
+		"est_001": {
+			"mat_001": 95,
+			"mat_002": 88
+		}
+	},
+
+	"anuncios": {
+		"institucion_1": {
+			"anuncio_001": {
+				"titulo": "Suspensión de clases",
+				"descripcion": "Mañana no habrá clases por mantenimiento",
+				"fecha": "2025-01-10"
+			},
+			"anuncio_002": {
+				"titulo": "Entrega de documentos",
+				"descripcion": "Recuerda entregar tus documentos antes del viernes",
+				"fecha": "2025-01-12"
+			}
+		}
+	},
+
+	"auth": {
+		"est_001": {
+			"correo": "juan@example.com",
+			"password_hash": "HASH_AQUI",
+			"rol": "estudiante",
+			"institucion": "institucion_1"
+		}
+	}
+}
