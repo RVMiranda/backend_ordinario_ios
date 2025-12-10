@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+staticfiles/
+
+# Environment / credentials
+.env
+backend-app-escuela-firebase-adminsdk-fbsvc-9482dd7af8.json
+serviceAccountKey.json
+
+# Virtual envs
+venv/
+.venv/
+
+# macOS
+.DS_Store
