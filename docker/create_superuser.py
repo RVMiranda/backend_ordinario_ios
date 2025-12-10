@@ -17,6 +17,7 @@ def main():
         return
 
     from django.contrib.auth import get_user_model
+    from django.db.utils import OperationalError
     User = get_user_model()
 
     username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
@@ -27,12 +28,16 @@ def main():
         print('DJANGO_SUPERUSER_USERNAME or DJANGO_SUPERUSER_PASSWORD not set; skipping superuser creation')
         return
 
-    if User.objects.filter(username=username).exists():
-        print('Superuser already exists; skipping')
-        return
+    try:
+        if User.objects.filter(username=username).exists():
+            print('Superuser already exists; skipping')
+            return
 
-    User.objects.create_superuser(username=username, email=email, password=password)
-    print('Superuser created:', username)
+        User.objects.create_superuser(username=username, email=email, password=password)
+        print('Superuser created:', username)
+    except OperationalError as e:
+        print('Database not ready or missing tables, skipping superuser creation:', e)
+        return
 
 if __name__ == '__main__':
     main()
