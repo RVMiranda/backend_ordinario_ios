@@ -22,12 +22,15 @@ def sync_materia_to_firebase(instance):
     ref = get_firebase_ref()
     materia_ref = ref.child(instance.id_materia)
 
+    # Aquí estamos obteniendo el nombre de la institución directamente desde la relación ForeignKey
+    institucion_name = instance.institucion.nombre if instance.institucion else "Unknown"
+
     data = {
         "nombre": instance.nombre,
         "profesor": instance.profesor,
-        "institucion": instance.institucion,
-        "tareas": instance.tareas or {},
-        "calificaciones": instance.calificaciones or {}
+        "institucion": institucion_name,  # Asegúrate de pasar solo el nombre de la institución
+        "tareas": instance.tareas or {},  # Si no hay tareas, guarda un dict vacío
+        "calificaciones": instance.calificaciones or {}  # Lo mismo para calificaciones
     }
 
     materia_ref.set(data)
