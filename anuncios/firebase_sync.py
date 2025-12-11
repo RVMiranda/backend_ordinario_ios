@@ -13,17 +13,18 @@ def get_firebase_ref():
 
 
 def sync_anuncio_to_firebase(instance):
-    ref = get_firebase_ref()
-
-    anuncio_ref = ref.child(instance.institucion).child(instance.id_anuncio)
-
-    data = {
-        "titulo": instance.titulo,
-        "descripcion": instance.descripcion,
-        "fecha": instance.fecha.strftime("%Y-%m-%d")
-    }
-
-    anuncio_ref.set(data)
+    # Asegúrate de que 'institucion' no sea vacío o None antes de construir el path
+    if instance.institucion:
+        institucion_name = instance.institucion.nombre  # Asegúrate de que 'nombre' es un campo válido
+        ref = db.reference('anuncios')  # Definir correctamente la referencia
+        anuncio_ref = ref.child(institucion_name).child(instance.id_anuncio)
+        anuncio_ref.set({
+            'titulo': instance.titulo,
+            'descripcion': instance.descripcion,
+            'fecha': instance.fecha.isoformat(),
+        })
+    else:
+        print("Error: La institución no está definida correctamente.")
 
 
 def delete_anuncio_from_firebase(instance):
