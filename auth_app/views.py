@@ -20,8 +20,15 @@ class RegisterView(APIView):
 
 class LoginView(APIView):
     def post(self, request):
-        username = request.data.get("username")
+        username_or_email = request.data.get("username")
         password = request.data.get("password")
+
+        # Buscar por email si no existe como username
+        try:
+            user_obj = User.objects.get(email=username_or_email)
+            username = user_obj.username
+        except User.DoesNotExist:
+            return Response({"error": "Credenciales inválidas"}, status=400)
 
         user = authenticate(username=username, password=password)
 
@@ -30,4 +37,9 @@ class LoginView(APIView):
 
         token, _ = Token.objects.get_or_create(user=user)
 
-        return Response({"token": token.key, "user_id": user.id})
+        return Response({
+            "token": token.key,
+            "user_id": user.id,
+            "username": user.username,
+            "email": user.email
+        })
