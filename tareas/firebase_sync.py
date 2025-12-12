@@ -20,8 +20,10 @@ def sync_tarea_to_firebase(instance):
         "titulo": instance.titulo,
         "descripcion": instance.descripcion,
         "fecha_entrega": instance.fecha_entrega.strftime("%Y-%m-%d"),
-        "materia": instance.materia,
-        "institucion": instance.institucion,
+        "materia_id": instance.materia.id,  # Usamos el ID de la materia
+        "materia_nombre": instance.materia.nombre,  # Usamos el nombre de la materia
+        "institucion_id": instance.institucion.id,  # Usamos el ID de la institución
+        "institucion_nombre": instance.institucion.nombre,  # Usamos el nombre de la institución
     }
 
     tarea_ref.set(data)
